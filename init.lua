@@ -6,6 +6,13 @@ vim.api.nvim_set_keymap('n', '<leader>b', ':BufferPick<CR>', {
     desc = 'Enter [B]ufferPick mode'
 })
 
+-- Toggle Inlay Hints
+vim.api.nvim_set_keymap('n', 'V', ':lua vim.lsp.inlay_hint(0, nil)<CR>', {
+        noremap = true,
+        silent = true,
+        desc = 'Toggle [V]isual inlay hints'
+})
+
 -- Disable netrw
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
