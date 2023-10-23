@@ -216,6 +216,7 @@ require('lualine').setup {
     }
 }
 
+require('nvim-tree').setup()
 
 -- Must always be at end of file else it gives me a lot of issues lol
 require('copilot').setup()
