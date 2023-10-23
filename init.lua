@@ -6,6 +6,13 @@ vim.api.nvim_set_keymap('n', '<leader>b', ':BufferPick<CR>', {
     desc = 'Enter [B]ufferPick mode'
 })
 
+-- Disable netrw
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+
+-- Enable highlight groups
+vim.opt.termguicolors = true
+
 -- toggle both numbers and relativenumbers on, vim.cmd
 vim.cmd('set number relativenumber')
 
@@ -38,6 +45,13 @@ vim.opt.expandtab = true
 
 -- Plugins
 require('packer').startup(function(use)
+
+  use { 'nvim-tree/nvim-tree.lua'
+  requires = {
+    'nvim-tree/nvim-web-devicons',
+    },
+  }
+
 	use 'wbthomason/packer.nvim'
 	-- Theme
 	use 'nyoom-engineering/oxocarbon.nvim'
