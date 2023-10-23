@@ -40,8 +40,8 @@ vim.opt.expandtab = true
 require('packer').startup(function(use)
 	use 'wbthomason/packer.nvim'
 	-- Theme
-	use 'folke/tokyonight.nvim'
-	vim.cmd('colorscheme tokyonight-night')
+	use 'nyoom-engineering/oxocarbon.nvim'
+	vim.cmd('colorscheme oxocarbon')
     
     -- barbar
     use 'romgrk/barbar.nvim'
@@ -191,11 +191,11 @@ cmp.setup {
 
 require('lualine').setup {
     options = {
-        theme = 'tokyonight'
+        theme = 'codedark' -- Fits the oxocarbon theme
     }
 }
 
 
--- Must always be at end of file 
+-- Must always be at end of file else it gives me a lot of issues lol
 require('copilot').setup()
 
