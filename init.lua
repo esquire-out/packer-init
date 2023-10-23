@@ -194,6 +194,8 @@ require('lualine').setup {
         theme = 'tokyonight'
     }
 }
+
+
 -- Must always be at end of file 
 require('copilot').setup()
 
