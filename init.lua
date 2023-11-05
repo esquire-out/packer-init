@@ -61,8 +61,8 @@ require('packer').startup(function(use)
 
 	use 'wbthomason/packer.nvim'
 	-- Theme
-	use 'nyoom-engineering/oxocarbon.nvim'
-	vim.cmd('colorscheme oxocarbon')
+	use { 'catppuccin/nvim', as = "catppuccin"}
+	vim.cmd('colorscheme catppuccin-mocha')
     
     -- barbar
     use 'romgrk/barbar.nvim'
