@@ -6,6 +6,9 @@ vim.api.nvim_set_keymap('n', '<leader>b', ':BufferPick<CR>', {
     desc = 'Enter [B]ufferPick mode'
 })
 
+-- Automatic indentation
+
+
 -- Toggle Inlay Hints
 vim.api.nvim_set_keymap('n', 'V', ':lua vim.lsp.inlay_hint(0, nil)<CR>', {
         noremap = true,
@@ -30,7 +33,7 @@ vim.api.nvim_set_keymap('n', 'T', ':Telescope<CR>',{
     desc = 'Launch [T]elescope'
 })
 
-vim.api.nvim_set_keymap('n', 'F', ':Telescope find_files<CR>', { 
+vim.api.nvim_set_keymap('n', 'F', ':Telescope find_files<CR>', {
     noremap = true,
     silent = true,
     desc = 'Find [F]iles'
@@ -53,17 +56,17 @@ vim.opt.expandtab = true
 -- Plugins
 require('packer').startup(function(use)
 
-  use { 'nvim-tree/nvim-tree.lua'
+  use { 'nvim-tree/nvim-tree.lua',
   requires = {
     'nvim-tree/nvim-web-devicons',
     },
   }
 
-	use 'wbthomason/packer.nvim'
-	-- Theme
-	use { 'catppuccin/nvim', as = "catppuccin"}
-	vim.cmd('colorscheme catppuccin-mocha')
-    
+        use 'wbthomason/packer.nvim'
+        -- Theme
+    use { 'catppuccin/nvim', as = "catppuccin"}
+        vim.cmd('colorscheme catppuccin-mocha')
+
     -- barbar
     use 'romgrk/barbar.nvim'
 
@@ -73,23 +76,23 @@ require('packer').startup(function(use)
         requires = {'nvim-tree/nvim-web-devicons', opt = true}
     }
 
-	-- Treesitter
-	use 'nvim-treesitter/nvim-treesitter'
+        -- Treesitter
+        use 'nvim-treesitter/nvim-treesitter'
 
-	-- Mason
-	use {
-		'williamboman/mason.nvim',
-		'williamboman/mason-lspconfig.nvim',
-		'neovim/nvim-lspconfig',
-	}
+        -- Mason
+        use {
+                'williamboman/mason.nvim',
+                'williamboman/mason-lspconfig.nvim',
+                'neovim/nvim-lspconfig',
+        }
 
-	-- Telescope
-	use {
-		'nvim-telescope/telescope.nvim',
-		tag = '0.1.4',
-		requires = {{ 'nvim-lua/plenary.nvim' }}
-	}
-    
+        -- Telescope
+        use {
+                'nvim-telescope/telescope.nvim',
+                tag = '0.1.4',
+                requires = {{ 'nvim-lua/plenary.nvim' }}
+        }
+
     -- Autocompletion
     use 'hrsh7th/nvim-cmp' -- nvim-cmp
     use 'hrsh7th/cmp-nvim-lsp' -- LSP source for nvim-cmp
@@ -105,24 +108,24 @@ end)
 -- LSP stuff
 require('mason').setup()
 require('mason-lspconfig').setup({
-	ensure_installed = { 'lua_ls' }
+        ensure_installed = { 'lua_ls' }
 
 })
 
 local on_attach = function(_, _)
-	-- No idea what these do
-	--vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
-	vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
-	vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
-	-- These I know 
+        -- No idea what these do
+        --vim.keymap.set('n', '<leader>rn', vim.lsp.buf.rename, {})
+        vim.keymap.set('n', '<leader>ca', vim.lsp.buf.code_action, {})
+        vim.keymap.set('n', 'gd', vim.lsp.buf.definition, {})
+        -- These I know
     vim.keymap.set('n', 'E', vim.diagnostic.open_float, {})
-	vim.keymap.set('n', '<leader>i', vim.lsp.buf.implementation, {})
-	vim.keymap.set('n', '<leader>r', require('telescope.builtin').lsp_references, {})
-	vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
+        vim.keymap.set('n', '<leader>i', vim.lsp.buf.implementation, {})
+        vim.keymap.set('n', '<leader>r', require('telescope.builtin').lsp_references, {})
+        vim.keymap.set('n', 'K', vim.lsp.buf.hover, {})
 end
 
 require('lspconfig').lua_ls.setup {
-	on_attach = on_attach
+        on_attach = on_attach
 }
 
 -- Server configurations
@@ -209,6 +212,7 @@ cmp.setup {
   },
 }
 
+require('nvim-tree').setup()
 
 require('lualine').setup {
     options = {
@@ -216,8 +220,6 @@ require('lualine').setup {
     }
 }
 
-require('nvim-tree').setup()
 
 -- Must always be at end of file else it gives me a lot of issues lol
 require('copilot').setup()
-
